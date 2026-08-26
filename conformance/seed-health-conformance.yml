@@ -1,0 +1,127 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  https://seed.com/robots.txt (HTTP 200), https://help.seed.com/llms.txt (HTTP 200),
+  https://seed.com/terms-conditions (last updated 2025-12-18),
+  https://seed.com/privacy-policy, https://seed.com/consumer-health-data, and the
+  live TLS/DNS probe recorded in security/seed-health-domain-security.yml.
+note: >-
+  Seed Health publishes no API contract, so every API-shaped standard below is
+  recorded as not-conformant on the honest grounds that there is nothing to conform.
+  The two entries that DO conform are surfaces the company genuinely publishes: a
+  Content Signals declaration in robots.txt and an llms.txt on its help-centre host.
+  No compliance certification (SOC 2, ISO 27001, HIPAA, PCI, FedRAMP) is published on
+  any public Seed surface, so NO type Compliance pointer is emitted in apis.yml.
+domain_standard:
+  market: consumer dietary supplements / microbiome science
+  standard_declared: null
+  note: >-
+    REWARD-ONLY and correctly empty. Seed's market has no machine-readable domain
+    standard for a contract to declare — the applicable regimes (FDA DSHEA labelling,
+    FTC substantiation, state consumer-health-data statutes such as Washington's My
+    Health My Data) are regulatory obligations on a product, not interchange schemas
+    an API can signal. Nothing was invented to fill this slot.
+conformance:
+- id: content-signals
+  name: Content Signals (contentsignals.org)
+  conforms: true
+  evidence:
+    url: https://seed.com/robots.txt
+    status: 200
+    detail: 'Content-Signal: search=yes, ai-input=yes, ai-train=no under User-agent: *'
+- id: llms-txt
+  name: llms.txt
+  conforms: true
+  evidence:
+    url: https://help.seed.com/llms.txt
+    status: 200
+    detail: >-
+      95,739-byte llms.txt in canonical form (H1, blockquote summary, ## Articles
+      list) indexing ~200 public help-centre articles, each with a .md representation.
+- id: robots-txt
+  name: Robots Exclusion Protocol (RFC 9309)
+  conforms: true
+  evidence:
+    url: https://seed.com/robots.txt
+    status: 200
+    detail: Valid robots.txt with User-agent, Disallow and Sitemap directives.
+- id: tls
+  name: TLS 1.3 + HSTS
+  conforms: true
+  evidence:
+    url: https://seed.com/
+    status: 200
+    detail: >-
+      TLSv1.3, HSTS max-age 15552000, CAA records present. See
+      security/seed-health-domain-security.yml.
+- id: dnssec
+  name: DNSSEC
+  conforms: false
+  evidence:
+    detail: No DNSSEC on seed.com (probed 2026-08-26).
+- id: dmarc-enforcement
+  name: DMARC enforcement
+  conforms: false
+  evidence:
+    detail: >-
+      DMARC record present but policy is p=none — published, not enforcing.
+- id: openapi
+  name: OpenAPI
+  conforms: false
+  evidence:
+    detail: >-
+      No OpenAPI on seed.com, api.seed.com, help.seed.com or developer.seed.com.
+      See x-coverage in apis.yml.
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence:
+    detail: No public event or webhook surface.
+- id: graphql
+  name: GraphQL
+  conforms: false
+  evidence:
+    detail: >-
+      api.seed.com/graphql answered a Cloudflare interstitial (403); robots.txt
+      disallows /api/*, so no introspection was attempted.
+- id: mcp
+  name: Model Context Protocol
+  conforms: false
+  evidence:
+    detail: No hosted or stdio MCP server published.
+- id: a2a
+  name: A2A Agent Card
+  conforms: false
+  evidence:
+    url: https://seed.com/.well-known/agent-card.json
+    status: 404
+    detail: Also probed /.well-known/agent.json — 404.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence:
+    url: https://seed.com/.well-known/oauth-authorization-server
+    status: 404
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence:
+    url: https://seed.com/.well-known/openid-configuration
+    status: 404
+- id: rfc9457
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence:
+    detail: No public contract to declare a problem+json media type.
+- id: rfc9116
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence:
+    url: https://seed.com/.well-known/security.txt
+    status: 404
+- id: rfc9727
+  name: RFC 9727 /.well-known/api-catalog
+  conforms: false
+  evidence:
+    url: https://seed.com/.well-known/api-catalog
+    status: 404

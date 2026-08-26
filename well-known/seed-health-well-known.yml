@@ -1,0 +1,122 @@
+generated: '2026-08-26'
+method: probed
+source: >-
+  Direct unauthenticated HTTP probes of every host reachable from apis.yml on
+  2026-08-26. Seed Health publishes no OpenAPI, so there are no servers[] hosts
+  to add; the hosts below are the apex commerce site, the public help centre, the
+  storefront API host named in robots.txt, and the conventional developer
+  subdomain.
+note: >-
+  No /.well-known/* path returned a real document on any host, so NO type WellKnown
+  and NO type SecurityTxt pointer is emitted in apis.yml — a recorded absence is data,
+  not a presence. seed.com answers /.well-known/* with its Next.js 404 page (HTTP 404,
+  ~72KB of HTML). help.seed.com and api.seed.com sit behind a Cloudflare interstitial
+  that answered 403 "Just a moment..." to our probe; those are bot challenges, not
+  evidence of absence, and are recorded as such rather than as 404s.
+  seed.com/robots.txt IS a real served document and it carries a Content Signals
+  declaration, which is the one machine-readable agent-consent surface this company
+  publishes — that is what the type ContentSignal pointer in apis.yml refers to.
+hosts:
+- host: seed.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+    note: Next.js application 404 HTML page, not a document.
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+    note: Legacy pre-A2A-0.3 agent card path, probed and missed.
+  - path: /llms.txt
+    status: 404
+    file: null
+  - path: /robots.txt
+    status: 200
+    file: seed-health-robots.txt
+    content_type: text/plain; charset=UTF-8
+    note: >-
+      Served, 639 bytes. Carries a Content Signals (contentsignals.org) declaration
+      and explicitly disallows /api/* and /partner/*.
+- host: help.seed.com
+  documents:
+  - path: /llms.txt
+    status: 200
+    file: ../llms/seed-health-llms.txt
+    content_type: text/markdown; charset=utf-8
+    note: >-
+      Real llms.txt, 95,739 bytes, indexing ~200 public help-centre articles with a
+      .md representation per article. Saved verbatim to llms/ and wired as type LLMsTxt.
+  - path: /robots.txt
+    status: 200
+    file: null
+    note: Served, 251 bytes; not retained (help-centre platform boilerplate).
+  - path: /.well-known/security.txt
+    status: 403
+    file: null
+    note: Cloudflare "Just a moment..." interstitial — bot challenge, not a 404.
+  - path: /.well-known/agent-card.json
+    status: 403
+    file: null
+    note: Cloudflare "Just a moment..." interstitial — bot challenge, not a 404.
+- host: api.seed.com
+  documents:
+  - path: /
+    status: 403
+    file: null
+    note: >-
+      Host resolves and is live but every path answered with a Cloudflare
+      interstitial. seed.com/robots.txt disallows /api/*, so this surface is a
+      first-party storefront API the company has explicitly asked crawlers not to
+      walk; we honoured that and probed no deeper.
+  - path: /openapi.json
+    status: 403
+    file: null
+  - path: /graphql
+    status: 403
+    file: null
+- host: developer.seed.com
+  documents:
+  - path: /
+    status: 0
+    file: null
+    note: DNS does not resolve — no developer subdomain exists.
+content_signals:
+  source: https://seed.com/robots.txt
+  file: seed-health-robots.txt
+  status: 200
+  standard: https://contentsignals.org/
+  declaration: 'search=yes, ai-input=yes, ai-train=no'
+  user_agent: '*'
+  interpretation: >-
+    Seed permits search indexing and use of its content in AI-generated answers, and
+    refuses use of its content for training or fine-tuning models. This is a real,
+    machine-readable consent expression published by the provider.
+  disallowed_paths:
+  - /cart
+  - /checkout
+  - /login
+  - /registration
+  - /testspeed
+  - /login/reset_password
+  - /account/*
+  - /account
+  - /partner/*
+  - /api/*
+  - /gut-reset
+  - /new-products
+  sitemap: https://seed.com/sitemap_index.xml

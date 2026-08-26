@@ -1,0 +1,28 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  https://seed.com/daily-synbiotic and https://seed.com/practitioners, read
+  2026-08-26. No developer pricing page exists on any Seed host.
+plan_count: 0
+note: >-
+  Seed Health publishes NO API plans, because it publishes no API. plan_count is an
+  honest zero, not a gap in this pass. What Seed does publish is consumer product
+  pricing — a recurring direct-to-consumer subscription for DS-01, PDS-08 and VS-01
+  synbiotics sold from seed.com — which is retail commerce, not API metering, and is
+  deliberately NOT restated here as though it were a developer plan. The nearest
+  thing to a partner tier is the Practitioner Program, and it is fulfilled through
+  Fullscript and practitioners@seed.com rather than through any programmatic surface
+  or rate card.
+plans: []
+non_api_commercial_surface:
+- name: Consumer subscription (seed.com)
+  kind: retail-subscription
+  url: https://seed.com/daily-synbiotic
+  metered: false
+  api_access_included: false
+- name: Practitioner Program
+  kind: professional-referral
+  url: https://seed.com/practitioners
+  fulfillment: Fullscript, or unique patient discount codes on seed.com
+  contact: practitioners@seed.com
+  api_access_included: false

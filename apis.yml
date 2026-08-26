@@ -1,8 +1,19 @@
 aid: seed-health
 name: Seed Health
-description: 'Seed Health is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Seed Health is a microbiome science company founded in 2017 by Ara Katz
+  and Raja Dhir, headquartered in Los Angeles County, California. It develops and
+  sells clinically studied probiotic, prebiotic and synbiotic consumer products —
+  most notably the DS-01 Daily Synbiotic, the PDS-08 Pediatric Daily Synbiotic and
+  the VS-01 Vaginal Synbiotic — direct to consumers via a subscription commerce site
+  at seed.com, alongside SeedLabs, its environmental and applied-microbiology research
+  arm. Seed publishes a substantial public science, editorial (Cultured) and help-center
+  surface, and maintains a small public GitHub organization, but it operates no public
+  developer program: there is no developer portal, no published API reference, no
+  OpenAPI, GraphQL, AsyncAPI or MCP contract, and its internal storefront API paths
+  are explicitly disallowed in robots.txt. Its practitioner program is fulfilled through
+  Fullscript and email rather than through any integration surface.'
 url: https://raw.githubusercontent.com/api-evangelist/seed-health/refs/heads/main/apis.yml
+image: https://avatars.githubusercontent.com/u/63071534?v=4
 x-type: company
 x-source: harvest:secondary-market
 x-tier: stub
@@ -12,6 +23,15 @@ created: '2026-08-26'
 modified: '2026-08-26'
 tags:
 - Company
+- Health
+- Consumer Products
+- Life Sciences
+- Microbiome
+- Probiotics
+- Nutrition
+- Subscription Commerce
+- Direct to Consumer
+- Biotechnology
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +39,55 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/seed-health-domain-security.yml
 - type: Website
-  url: https://www.hiive.com/securities/seed-health-stock
+  url: https://seed.com/
+- type: HelpCenter
+  url: https://help.seed.com/en-US
+- type: Support
+  url: https://help.seed.com/en-US/contact
+- type: Blog
+  url: https://seed.com/cultured
+- type: GitHubOrganization
+  url: https://github.com/seed-health
+- type: TermsOfService
+  url: https://seed.com/terms-conditions
+- type: PrivacyPolicy
+  url: https://seed.com/privacy-policy
+- type: LLMsTxt
+  url: llms/seed-health-llms.txt
+- type: ContentSignal
+  url: well-known/seed-health-well-known.yml
+- type: Packages
+  url: packages/seed-health-packages.yml
+- type: Conformance
+  url: conformance/seed-health-conformance.yml
+x-enrichment:
+  date: '2026-08-26'
+  status: minimal
+  artifacts_added: 7
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Seed Health is a direct-to-consumer microbiome supplements brand that ships
+    software only as its own storefront: there is no developer.seed.com (DNS does not
+    resolve), no API reference anywhere on seed.com or help.seed.com, and its one
+    first-party API host, api.seed.com, is the storefront backend that seed.com/robots.txt
+    explicitly closes to crawlers with "Disallow: /api/*"; its only public npm package
+    is a Figma design-token library, and its Practitioner Program integrates through
+    Fullscript and email rather than any programmatic surface.
+  evidence:
+  - url: https://developer.seed.com
+    status: 0
+  - url: https://seed.com/robots.txt
+    status: 200
+  - url: https://seed.com/.well-known/api-catalog
+    status: 404
+  - url: https://seed.com/.well-known/agent-card.json
+    status: 404
+  - url: https://help.seed.com/llms.txt
+    status: 200
+  checked: '2026-08-26'

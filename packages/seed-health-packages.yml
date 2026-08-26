@@ -1,0 +1,64 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  npm registry metadata (registry.npmjs.org), the npm search API, and the public
+  GitHub organization github.com/seed-health — whose org record names
+  blog: https://seed.com and email: engineering@seed.com, confirming it belongs to
+  this company and not to one of the several unrelated "SEED" software projects
+  (SEED Platform building-energy, seed.run) that dominate a naive search.
+note: >-
+  Seed Health publishes exactly one first-party package. It is a design-token
+  distribution for their own applications, NOT a client library for any API — Seed
+  ships no public API, so there is no SDK to find. For that reason NO type SDKs
+  pointer is emitted in apis.yml: sdk_count must not be credited by a package that
+  wraps nothing. PyPI, RubyGems, crates.io and Packagist were all probed for a
+  seed-health package and all returned 404.
+packages:
+- name: '@seed-health/tokens'
+  registry: npm
+  url: https://www.npmjs.com/package/@seed-health/tokens
+  repository: https://github.com/seed-health/tokens
+  official: true
+  kind: design-tokens
+  is_api_sdk: false
+  language: JavaScript/TypeScript
+  license: MIT
+  description: Design tokens for Seed Health applications.
+  version: 1.0.19
+  published: '2026-07-13'
+  first_published: '2025-10-22'
+  release_count: 17
+  evidence:
+    registry_metadata: https://registry.npmjs.org/@seed-health%2Ftokens
+    status: 200
+  note: >-
+    Figma-sourced design tokens built with style-dictionary and terrazzo, exported as
+    JS/TS, CSS, SCSS, JSON and a React global-token-styles entry point. Actively
+    maintained — 17 releases, latest 2026-07-13, source repo pushed 2026-07-16.
+registries_probed:
+- registry: npm
+  status: 200
+  result: 1 first-party package found
+- registry: pypi
+  url: https://pypi.org/pypi/seed-health/json
+  status: 404
+  result: none
+- registry: rubygems
+  url: https://rubygems.org/api/v1/gems/seed-health.json
+  status: 404
+  result: none
+- registry: crates.io
+  url: https://crates.io/api/v1/crates/seed-health
+  status: 404
+  result: none
+- registry: packagist
+  url: https://repo.packagist.org/packages/seed-health/seed-health.json
+  status: 404
+  result: none
+- registry: maven-central
+  status: not-probed
+  result: >-
+    Not probed — Seed publishes no JVM surface and no API for one to wrap; recorded
+    as not-checked rather than as an absence.
+sdk_count: 0
+official_package_count: 1

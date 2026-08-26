@@ -1,0 +1,25 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  Searched every public Seed surface for a documented rate limit on 2026-08-26 —
+  seed.com, help.seed.com (including its llms.txt article index), github.com/seed-health,
+  and a web search for a Seed developer/API reference. None exists.
+limit_count: 0
+note: >-
+  An honest zero. Seed Health documents no rate limits because it documents no API.
+  api.seed.com is a first-party storefront host that is (a) fronted by a Cloudflare
+  bot-management interstitial, which is edge protection rather than a published API
+  quota, and (b) explicitly disallowed for crawlers by seed.com/robots.txt
+  (Disallow: /api/*). We honoured that and did not probe it for live rate-limit
+  response headers, so no headers are recorded here — that is a deliberate
+  not-observed, not an absence.
+rate_limits: []
+response_headers: []
+exhaustion_status_code: null
+evidence:
+- url: https://seed.com/robots.txt
+  status: 200
+  detail: 'Disallow: /api/* — the storefront API is closed to crawlers by the provider.'
+- url: https://api.seed.com/
+  status: 403
+  detail: Cloudflare "Just a moment..." interstitial; no rate-limit headers observable.
