@@ -13,6 +13,17 @@ description: 'Seed Health is a microbiome science company founded in 2017 by Ara
   are explicitly disallowed in robots.txt. Its practitioner program is fulfilled through
   Fullscript and email rather than through any integration surface.'
 url: https://raw.githubusercontent.com/api-evangelist/seed-health/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://avatars.githubusercontent.com/u/63071534?v=4
 x-type: company
 x-source: harvest:secondary-market
