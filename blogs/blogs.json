@@ -1,0 +1,14 @@
+{
+  "repo": "seed-health",
+  "feeds": [
+    {
+      "source": "https://help.seed.com/en-US/contact",
+      "feed_url": "https://help.seed.com/en-US/contact",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-30T22:33:40Z"
+}
