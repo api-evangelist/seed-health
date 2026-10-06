@@ -44,7 +44,7 @@ x-tier: stub
 x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-26'
-modified: '2026-08-26'
+modified: '2026-10-06'
 tags:
 - Company
 - Health
@@ -63,6 +63,10 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://seed.com/press/
+  type: Blog
+- url: https://seed.com/feed/
+  type: BlogRSS
 - type: DomainSecurity
   url: security/seed-health-domain-security.yml
 - type: Website
